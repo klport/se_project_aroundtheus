@@ -1,16 +1,16 @@
-.header{
- margin-top: 45px;
- max-width: 880px;
- border-bottom: 3px solid grey;
- grid-template-columns: repeat(auto-fit,282px);
- /* box-sizing: border-box; */
+.header {
+  margin-top: 45px;
+  max-width: 880px;
+  border-bottom: 3px solid grey;
+  grid-template-columns: repeat(auto-fit, 282px);
+  /* box-sizing: border-box; */
 }
 
-.header__logo{
- width: 173px;
- height: 33px;
- padding-bottom: 41px;
- margin-top: 45px;
+.header__logo {
+  width: 173px;
+  height: 33px;
+  padding-bottom: 41px;
+  margin-top: 45px;
 }
 
 /* 

@@ -1,7 +1,6 @@
 .footer {
- margin: 0 auto;
- max-width: 880px;
-  
+  margin: 0 auto;
+  max-width: 880px;
 }
 .footer__name {
   font-family: "Inter", Arial, sans-serif;
@@ -11,7 +10,6 @@
   color: #545454;
   padding-top: 67px;
   padding-bottom: 60px;
- 
 }
 
 @media screen and (max-width: 879px) {
