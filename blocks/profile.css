@@ -18,7 +18,18 @@
     "title button"
     "description description";
   grid-template-columns: minmax(auto, 373px) auto;
-  flex: wrap;
+  grid-gap: 7px 17px;
+}
+
+.profile__title {
+  font-size: 42px;
+  line-height: 48px;
+  font-weight: 500px;
+  grid-area: title;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -26,6 +37,10 @@
   height: 24px;
   width: 24px;
   grid-area: button;
+  align-self: center;
+  border: 1px solid #fff;
+  padding: 0;
+  margin: 0;
 }
 .profile__edit-button:hover {
   opacity: 50%;
@@ -43,14 +58,6 @@
   opacity: 50%;
   transition: 0.02s;
   cursor: pointer;
-}
-
-.profile__title {
-  font-size: 42px;
-  line-height: 48px;
-  font-weight: 500px;
-  grid-area: title;
-  margin: 0;
 }
 
 .profile__description {
