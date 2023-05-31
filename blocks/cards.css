@@ -1,7 +1,7 @@
 .cards {
 /* fonts */
 
-   margin: 35pX auto 0 auto;
+   margin: 35px auto 0 auto;
   display: grid;
   max-width: 880px;
   width: 100%;
@@ -9,7 +9,6 @@
   font-size: 14px;
   
 }
-
 
 .cards__list {
   display: grid;
