@@ -1,18 +1,10 @@
 .card {
   display: flex;
-  border-radius: 10%;
   flex-direction: column;
   list-style: none;
+  border-radius: 10%;
 }
 
-.card__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
 
 .card__img {
   width: 282px;
@@ -26,11 +18,12 @@
   display: flex;
   background-color: white;
   color: black;
-  padding: 25px 20px;
+  padding: 20px 20px;
   align-items: center;
   justify-content: space-between;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: normal;
+ 
 }
 
 .card__like-button {
