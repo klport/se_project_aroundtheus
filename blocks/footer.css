@@ -27,9 +27,9 @@
     margin-top: 0;
     margin-left: 19px;
     max-width: calc(100% - 40px);
-    padding-top: 0x;
+    padding-top: 0;
     padding-bottom: 36px;
-  }
+   }
 
   .footer__name {
     padding-top: 48px 0;
