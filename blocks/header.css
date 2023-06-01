@@ -13,7 +13,6 @@
   margin-top: 45px;
 }
 
-
 @media screen and (max-width: 900px) {
   .header {
     min-height: 85px;
@@ -28,4 +27,10 @@
   .header {
     width: 100%;
   }
-} 
+}
+@media screen and (max-width: 347px) {
+  .header {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

@@ -1,13 +1,14 @@
 .cards {
-/* fonts */
+  /* fonts */
 
-   margin: 35px auto 0 auto;
+  margin: 35px auto 0 auto;
   display: grid;
   max-width: 880px;
   width: 100%;
   font-family: "Inter", "Arial", sans-serif;
   font-size: 14px;
-  
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  /* Reviewer, is this what you meant by "you can use auto-fit in a combination with minmax keyword for Grid in cards section?"  */
 }
 
 .cards__list {

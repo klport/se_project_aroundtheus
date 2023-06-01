@@ -6,7 +6,6 @@
   overflow: hidden;
 }
 
-
 .card__img {
   width: 282px;
   height: 282px;
@@ -14,7 +13,7 @@
   object-fit: cover;
 }
 
-.card__img-title{
+.card__img-title {
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 900;
@@ -29,8 +28,6 @@
   justify-content: space-between;
   /* font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: normal; */
-  
- 
 }
 
 .card__like-button {

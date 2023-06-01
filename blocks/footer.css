@@ -18,16 +18,21 @@
     max-width: 879px;
     margin: 0 auto 0 60px;
   }
-  
 }
 @media screen and (max-width: 596px) {
   .footer {
-    width: 282px;
+    width: 320px;
     font-size: 14px;
     line-height: 17px;
+    margin-top: 0;
     margin-left: 19px;
     max-width: calc(100% - 40px);
-    padding-top: 48px;
+    padding-top: 0x;
+    padding-bottom: 36px;
+  }
+
+  .footer__name {
+    padding-top: 48px 0;
     padding-bottom: 36px;
   }
 }
