@@ -10,6 +10,7 @@
   color: #545454;
   padding-top: 67px;
   padding-bottom: 60px;
+  margin: 0;
 }
 
 @media screen and (max-width: 900px) {
@@ -17,9 +18,7 @@
     max-width: 879px;
     margin: 0 auto 0 60px;
   }
-  .footer__copyright {
-    margin-left: 80px;
-  }
+  
 }
 @media screen and (max-width: 596px) {
   .footer {

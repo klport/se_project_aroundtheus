@@ -1,7 +1,7 @@
 .header {
   margin-top: 45px;
   max-width: 880px;
-  border-bottom: 3px solid grey;
+  border-bottom: 1px solid #545454;
   grid-template-columns: repeat(auto-fit, 282px);
   /* box-sizing: border-box; */
 }
