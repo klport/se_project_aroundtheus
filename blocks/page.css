@@ -17,9 +17,16 @@
   min-height: 100vh;
 }
 
-@media screen and (max-width: 1280px) {
-  .page {
-    margin: 0 20px;
-    max-width: calc(100% - 40px);
+@media screen and (max-width: 596px) {
+  .header {
+    width: 320px;
+    max-width: 100%;
+  }
+  .header__image {
+    width: 126px;
+    height: 24px;
+    margin-left: 27px;
+    padding-bottom: 32px;
+    margin-top: 28px;
   }
 }

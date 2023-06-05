@@ -10,10 +10,11 @@
   width: 173px;
   height: 33px;
   padding-bottom: 41px;
-  margin-top: 45px;
+  
 }
 
-@media screen and (max-width: 900px) {
+
+@media screen and (max-width: 879px) {
   .header {
     min-height: 85px;
     max-width: 581px;
@@ -26,11 +27,5 @@
 @media screen and (max-width: 580px) {
   .header {
     width: 100%;
-  }
-}
-@media screen and (max-width: 347px) {
-  .header {
-    width: 100%;
-    margin: 0 auto;
   }
 }

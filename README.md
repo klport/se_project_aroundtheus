@@ -10,6 +10,11 @@ Flat BEM
 Web Responsive pages
 CSS animation and transform
 
+* [Link to the project]  
+
+https://klport.github.io/se_project_aroundtheus/
+
+*
 ### Overview  
 
 * Intro  
