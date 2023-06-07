@@ -38,6 +38,7 @@
 
 @media screen and (max-width: 320px) {
   .footer__name {
+    padding-top: 48px;
     max-width: 320px;
     margin-left: 16px;
   }

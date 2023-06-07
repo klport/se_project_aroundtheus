@@ -44,6 +44,7 @@
   margin: 0;
 }
 .profile__edit-button:hover {
+  opacity: 60%;
   transition: 0.02s;
   cursor: pointer;
 }
@@ -58,7 +59,7 @@
 }
 
 .profile__add-button:hover {
-  opacity: 50%;
+  opacity: 60%;
   transition: 0.02s;
   cursor: pointer;
 }
@@ -91,8 +92,6 @@
   .profile__title {
     font-size: 22px;
     line-height: 27px;
-    /* make sure if these sizes are required from the FIGMA margin-top: 27px; 
-  margin-bottom: 14px; */
     max-width: 200px;
     min-width: 170px;
   }
@@ -109,6 +108,7 @@
     width: 100%;
     margin: 0;
     flex-direction: column;
+    padding-bottom: 1px;
   }
   .profile__image {
     margin: 0;
@@ -130,16 +130,10 @@
     width: 282px;
   }
 }
-/* @media screen and (max-width: 320px) {
-  .profile__info {
-    margin-top: 27px;
-    margin-bottom: 36px;
+/* 
+@media screen and (max-width: 320px) {
+  .profile {
+    padding-bottom: 1px;
   }
-  .profile__add-button {
-    margin: 0;
-  }
-  .
-  .profile__title {
-    line-height: 27px;
-  }
-} */
+
+}  */
