@@ -1,22 +1,18 @@
 .header {
   margin-top: 45px;
   max-width: 880px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px rgba(84, 84, 84, 0.7);
   grid-template-columns: repeat(auto-fit, 282px);
-  /* box-sizing: border-box; */
 }
 
 .header__logo {
   width: 173px;
   height: 33px;
   padding-bottom: 41px;
-  
 }
-
 
 @media screen and (max-width: 879px) {
   .header {
-    min-height: 85px;
     max-width: 581px;
   }
   .header__logo {
