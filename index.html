@@ -47,15 +47,19 @@
 
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
-        <p class="modal__heading">Edit profile</p>
+        <button
+          class="modal__close"
+          type="button"
+          id="modal-close-button"
+        ></button>
+        <h3 class="modal__heading">Edit profile</h3>
         <form class="modal__form">
           <input
             class="modal__form-input"
             type="text"
             name="title"
             id="profile-title-input"
-            placeholder="Jacques Cousteau"
+            placeholder="Name"
             required
           />
           <input
@@ -63,21 +67,17 @@
             type="text"
             name="description"
             id="profile-description-input"
-            placeholder="Explorer"
+            placeholder="About"
             required
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
 
     <template id="card-template">
       <li class="card">
-        <img
-          class="card__img"
-          src=""
-          alt=""
-        />
+        <img class="card__img" src="" alt="" />
         <div class="card__description">
           <h2 class="card__img-title"></h2>
           <button class="card__like-button" aria-label="like button"></button>
@@ -85,6 +85,6 @@
       </li>
     </template>
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
