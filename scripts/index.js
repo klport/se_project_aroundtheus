@@ -25,6 +25,18 @@ const initialCards = [
   },
 ];
 
+const cardTemplate = document
+.querySelector("#card-template")
+.content.firstElementChild;
+
+
+//Wrapppers
+
+const cardsWrap = document.querySelector(".cards__list");
+const modal = document.querySelector(".modal");
+const profileFormElement = document.querySelector(".modal__form");
+
+
 /*
 ELEMENTS 
 */
@@ -41,8 +53,7 @@ const profileDescriptionInput = document.querySelector(
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+
 
 /*
 Functions 
@@ -52,23 +63,8 @@ function closePopup() {
   profileEditModal.classList.remove("modal__opened");
 }
 
-function getCardElement(cardData) {
-  // clone the template element with all its content and store it in a cardElement variable
-  const cardElement = cardTemplate.cloneNode(true);
-  // access the card title and image and store them in variables
-  const cardImageEl = cardElement.querySelector(".card__img");
-  const cardTitleEl = cardElement.querySelector(".card__img-title");
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
-  cardTitleEl.textContent = cardData.name;
-  return cardElement;
 
-  // set the path to the image to the link field of the object
-  // set the image alt text to the name field of the object
-  // set the card title to the name field of the object, too
-  // return the ready HTML element with the filled-in data
 
-}
 /*
 Event Handlers  
 */
@@ -90,11 +86,23 @@ profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal__opened");
 });
 
-modalCloseButton.addEventListener("click", closePopup);
 
+function getCardElement(cardData) {
+  // clone the template element with all its content and store it in a cardElement variable
+  const cardElement = cardTemplate.cloneNode(true);
+  // access the card title and image and store them in variables
+  const cardImageEl = cardElement.querySelector(".card__img");
+  const cardTitleEl = cardElement.querySelector(".card__img-title");
+
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = cardData.name;
+  return cardElement;
+}
+
+modalCloseButton.addEventListener("click", closePopup);
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+  cardsWrap.prepend(getCardElement(cardData));
 });
