@@ -56,7 +56,6 @@ const jobInput = profileFormElement.querySelector(
 function closeModal(modal) {
   modal.classList.remove("modal__opened");
 }
-
 //function openModal() {
  // nameInput.value = profileTitle.textContent;
  // jobInput.value = profileDescription.textContent;
@@ -100,9 +99,7 @@ profileModalCloseButton.addEventListener("click", () =>
 
 // Add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
+addCardModalCloseButton.addEventListener("click", () => closeModal(addCardModal));
 
 initialCards.forEach((cardData) => {
   cardsWrap.prepend(getCardElement(cardData));
