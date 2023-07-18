@@ -33,10 +33,10 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__add-button" aria-label="profile add"></button>
+          <button class="profile__add-button" type="button" aria-label="profile add"></button>
         </section>
 
-        <section class="cards">
+        <section class="cards page__section">
           <ul class="cards__list"></ul>
         </section>
       </main>
@@ -57,7 +57,7 @@
         <h3 class="modal__heading">Edit profile</h3>
         <form class="modal__form">
           <input
-            class="modal__form-input"
+            class="modal__input modal__input_type_name"
             type="text"
             name="title"
             id="profile-title-input"
@@ -65,14 +65,14 @@
             required
           />
           <input
-            class="modal__form-input"
+            class="modal__input modal__input_type_description"
             type="text"
             name="description"
             id="profile-description-input"
-            placeholder="About"
+            placeholder="Description"
             required
           />
-          <button class="modal__button" type="submit">Save</button>
+          <button class="button modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -80,31 +80,30 @@
     <!-- Add card modal-->
 
     <div class="modal" id="add-card-modal">
-      <div class="modal__container">
+      <div class="modal__content">
         <button
           class="modal__close"
           type="button"
           id="modal-close-button"
         ></button>
-        <h3 class="modal__heading">New Place</h3>
+        <h3 class="modal__title">New Place</h3>
         <form class="modal__form" id="add-card-form">
           <input
-            class="modal__form-input modal__input_type_title"
+            class="modal__input modal__input_type_title"
             type="text"
             name="title"
             id="profile-title-input"
-            placeholder="Image URL"
+            placeholder="Title"
             required
           />
           <input
-            class="modal__form-input"
+            class="modal__input modal__input_type_url"
             type="text"
-            name="description"
-            id="profile-description-input"
-            placeholder="About"
-            required
+            name="url"
+            placeholder="Image URL"
+            
           />
-          <button class="modal__button" type="submit">Save</button>
+          <button class="button modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -113,9 +112,9 @@
 
     <template id="card-template">
       <li class="card">
-        <img class="card__img" src="" alt="" />
+        <img class="card__image" src="" alt="" />
         <div class="card__description">
-          <h2 class="card__img-title"></h2>
+          <h2 class="card__title"></h2>
           <button class="card__like-button" aria-label="like button"></button>
         </div>
       </li>

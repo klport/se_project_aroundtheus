@@ -63,7 +63,7 @@
   margin-bottom: 0;
 }
 
-.modal__form-input {
+.modal__input {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   border-bottom-color: #000;
   border-bottom-width: 1px;
@@ -120,7 +120,7 @@
     margin-right: 40px;
   }
 
-  .modal__heading {
+  .modal__title {
     width: auto;
     margin-top: 25px;
     margin-bottom: 25px;
