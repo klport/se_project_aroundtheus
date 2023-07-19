@@ -35,7 +35,9 @@ const editProfileModal = document.querySelector("#edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
 const addCardFormElement = addCardModal.querySelector(".modal__form");
-
+const previewImageModal = document.querySelector("#previewImageModal");
+const modalImage = document.querySelector("#modalImage");
+const modalText = document.querySelector("#modalText");
 // Buttons and Other DOM nodes
 
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -44,6 +46,7 @@ const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const addNewCardButton = document.querySelector(".profile__add-button");
+
 
 //Form Data
 const nameInput = profileFormElement.querySelector(".modal__input_type_name");
@@ -90,15 +93,27 @@ function getCardElement(data) {
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
 
+
   //find the delete button
-const deleteButton = cardElement.querySelector(".card__delete-button");
   //add the event listener to the delete button
     //cardElement.remove();
-deleteButton.addEventListener("click", () => {
-  cardElement.remove();
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  // add click listener to the cardImage element
+  //open modal with previewImageModal - add it into the html
+cardImage.addEventListener("click", () => {
+    previewImageModal.classList.add("modal_opened");
+    cardImage.src = data.link;
+    cardImage.alt = data.name;
+    cardTitle.textContent = data.name;
 });
-  // add click listener to the cardImage element 
-    //open modal with previewImageModal - add it into the html
+
+previewCloseButton.addEventListener("click", closePopup);
+
+
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });

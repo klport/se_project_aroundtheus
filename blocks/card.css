@@ -65,7 +65,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-  border: solid red;
+  border: none;
   width: 18px;
   height: 19.3px;
   right: 0;
@@ -76,7 +76,7 @@
 
 
 .card__delete-button:hover {
-  opacity: .6%;
+  opacity: 60%;
   transition: 0.4s;
   cursor: pointer;
 } 

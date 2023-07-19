@@ -104,6 +104,11 @@
 
 }
 
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
 @media screen and (max-width: 630px) {
   .modal__container {
     width: 282px;

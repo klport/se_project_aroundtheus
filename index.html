@@ -33,7 +33,11 @@
             ></button>
             <p class="profile__description">Explorer</p>
           </div>
-          <button class="profile__add-button" type="button" aria-label="profile add"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="profile add"
+          ></button>
         </section>
 
         <section class="cards page__section">
@@ -54,7 +58,7 @@
           id="modal-close-button"
         ></button>
         <h3 class="modal__title">Edit profile</h3>
-        <form class="modal__form ">
+        <form class="modal__form">
           <input
             class="modal__input modal__input_type_name"
             type="text"
@@ -100,24 +104,40 @@
             type="text"
             name="url"
             placeholder="Image URL"
-            
           />
           <button class="button modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
 
-    <script src="./scripts/index.js" defer></script>
 
+<!-- Preview Modal -->
+    <div class="modal" id="previewImageModal">
+      <div class="modal__image-container">
+        <img class="modal__image" id="modalImage"/>
+        <p class="modal__text" id="modalText"></p>
+        <button
+          class="modal__close"
+          id="previewCloseBtn"
+          type="button"></button>
+      </div>
+    </div>
+
+
+<!-- card template -->
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" aria-label="like button"></button>
-          <button class="card__delete-button" aria-label="delete button"></button>
+          <button
+            class="card__delete-button"
+            aria-label="delete button"
+          ></button>
         </div>
       </li>
     </template>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
