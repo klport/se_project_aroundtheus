@@ -103,15 +103,20 @@ function getCardElement(data) {
   });
 
   // add click listener to the cardImage element
-  //open modal with previewImageModal - add it into the html
+  //open modal with **previewImageModal - add it into the html
+
+  //function openModal(modal) {
+  //modal.classList.add("modal__opened");
+//
+
 cardImage.addEventListener("click", () => {
-    previewImageModal.classList.add("modal_opened");
-    cardImage.src = data.link;
-    cardImage.alt = data.name;
-    cardTitle.textContent = data.name;
+ modalImage.src = data.link;
+ modalImage.alt = data.name;
+ modalText.textContent = data.name;
+ openModal(previewImageModal);
 });
 
-previewCloseButton.addEventListener("click", closePopup);
+//  previewCloseButton.addEventListener("click", closeModal); 
 
 
   likeButton.addEventListener("click", () => {
@@ -123,7 +128,7 @@ previewCloseButton.addEventListener("click", closePopup);
   cardTitle.textContent = data.name;
 
   return cardElement;
-}
+};
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", () => {
@@ -148,3 +153,5 @@ initialCards.forEach((cardData) => renderCard (cardData, cardsWrap));
 //Form listeners
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleCardAddSubmit);
+
+previewCloseButton.addEventListener("click", closeModal); 
