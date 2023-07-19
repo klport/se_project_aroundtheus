@@ -46,6 +46,7 @@ const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const addNewCardButton = document.querySelector(".profile__add-button");
+const closePreviewImageButton = document.querySelector("#previewCloseBtn");
 
 
 //Form Data
@@ -154,4 +155,4 @@ initialCards.forEach((cardData) => renderCard (cardData, cardsWrap));
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 
-previewCloseButton.addEventListener("click", closeModal); 
+closePreviewImageButton.addEventListener("click", closeModal); 
