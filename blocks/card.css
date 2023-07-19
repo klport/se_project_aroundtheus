@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -67,7 +68,7 @@
   border: solid red;
   width: 18px;
   height: 19.3px;
-  left: 0;
+  right: 0;
   top: 0px;
   padding-top: 50px;
   padding-right: 45px;
