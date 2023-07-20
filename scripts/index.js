@@ -155,4 +155,6 @@ initialCards.forEach((cardData) => renderCard (cardData, cardsWrap));
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 
-closePreviewImageButton.addEventListener("click", closeModal); 
+closePreviewImageButton.addEventListener("click", () =>
+  closeModal(previewImageModal)
+); 
