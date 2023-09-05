@@ -63,8 +63,11 @@
             type="text"
             name="title"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
             required
           />
+          <span class="modal__input_error"></span>
           <input
             class="modal__input modal__input_type_description"
             type="text"
@@ -135,5 +138,6 @@
       </li>
     </template>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
   </body>
 </html>
