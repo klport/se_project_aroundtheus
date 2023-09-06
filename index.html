@@ -59,23 +59,26 @@
         <h3 class="modal__title">Edit profile</h3>
         <form class="modal__form">
           <input
-            class="modal__input modal__input_type_name"
+            class="modal__input modal__input_type_name modal__input_error"
             type="text"
+            id="user-name"
             name="title"
             placeholder="Name"
             minlength="2"
             maxlength="40"
             required
           />
-          <span class="modal__input_error"></span>
+          <span class="modal__error" id="user-name-error">Error Message Here</span>
           <input
             class="modal__input modal__input_type_description"
             type="text"
+            id="user-description"
             name="description"
             id="profile-description-input"
             placeholder="Description"
             required
           />
+          <span class="modal__error">Error Message Here</span>
           <button class="button modal__button" type="submit">Save</button>
         </form>
       </div>

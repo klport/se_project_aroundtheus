@@ -92,11 +92,12 @@ transition: visibility 0.5s, opacity 0.5s linear;
   margin-bottom: 29.74px;
 }
 
-.modal__input_error{
-  font-size: 12px;
+.modal__error{
+  font-size: 14px;
   line-height: 15px;
   color: #ff0000;
   position:absolute;
+  top: 125px;
   transition: opacity 0.3s;;
 
 }

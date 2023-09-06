@@ -9,23 +9,27 @@
 //object destructuring?
 
 function showInputError(formEl, inputEl, options) {
-  if (!inputEl.validity.valid) {
+ // const errorMessageEl = formEl.querySelector('#' + inputEl.id + (`error`));
+ console.log("#" + inputEl.id + "-error");
+}
+
+function checkInputValidity(formEl, inputEl, options) {
+  if (!inputEl.validiy.valid) {
     showInputError(formEl, inputEl, options);
   } else {
     hideInputError(formEl, inputEl, options);
   }
 }
 
-function checkInputValidity() {}
-
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
-    console.log(inputEl);
+      console.log(inputEl.validationMessage);
+    });
   });
-});
+}
 
 function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
