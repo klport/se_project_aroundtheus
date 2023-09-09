@@ -4,7 +4,6 @@
 //`Array` doesnt have to be defined. It is provided by the browser
 //Array.from()  static method creates a new, shallow-copied Array instace from an array-like or iterable object.
 /// `...` is a Spread operator. It is expecting that whatever is next to it is an array or arry -like object and grabs the contents (each of the items) and makes a copy
-
 //syntatic sugar
 //object destructuring?
 
@@ -55,7 +54,7 @@ function setEventListeners(formEl, options) {
 
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
-      toggleButtonState(inputEl, submitButton, options);
+      toggleButtonState(inputEls, submitButton, options);
     });
   });
 }
@@ -85,9 +84,9 @@ const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "popup__button_disabled",
+  inactiveButtonClass: "popup__button_disabledr",
   inputErrorClass: "modal__input_error",
-  errorClass: "popup__error_visible", //i think i still have to add this class?
+  errorClass: ".modal_error_visible", //i think i still have to add this class?
 };
 
 enableValidation(config);
