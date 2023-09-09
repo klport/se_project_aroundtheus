@@ -8,25 +8,54 @@
 //syntatic sugar
 //object destructuring?
 
-function showInputError(formEl, inputEl, options) {
- // const errorMessageEl = formEl.querySelector('#' + inputEl.id + (`error`));
- console.log("#" + inputEl.id + "-error");
+function showInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
+  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+  inputEl.classList.add(inputErrorClass);
+  errorMessageEl.textContent = inputEl.validationMessage;
+  errorMessageEl.classList.add(errorClass);
+}
+function hideInputError(formEl, inputEl, {inputErrorClass, errorClass}) {
+  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+  inputEl.classList.remove(inputErrorClass);
+ errorMessageEl.textContent = '';
+  errorMessageEl.classList.add(errorClass);
 }
 
 function checkInputValidity(formEl, inputEl, options) {
-  if (!inputEl.validiy.valid) {
-    showInputError(formEl, inputEl, options);
-  } else {
+  if (!inputEl.validity.valid) {
+   return showInputError(formEl, inputEl, options);
+  } 
     hideInputError(formEl, inputEl, options);
+
+}
+
+function hasInvalidInput (inputList) {
+  return !inputList.every((inputEl) => inputEl.validity.valid)
+}
+// disableButton
+
+// enableButton
+
+
+function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+  if(hasInvalidInput(inputEls)) {
+    submitButton.classList.add(inactiveButtonClass);
+    submitButton.disabled = true;
+    return;
   }
+  submitButton.classList.add(inactiveButtonClass);
+  submitButton.disabled = false;
 }
 
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const submitButton = formEl.querySelector('.modal__button');
   inputEls.forEach((inputEl) => {
+
     inputEl.addEventListener("input", (e) => {
-      console.log(inputEl.validationMessage);
+      checkInputValidity(formEl, inputEl, options);
+      toggleButtonState(inputEl, submitButton, options);
     });
   });
 }
@@ -57,8 +86,8 @@ const config = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: ".modal__input_error",
-  errorClass: "popup__error_visible", //i think i still have to add this class
+  inputErrorClass: "modal__input_error",
+  errorClass: "popup__error_visible", //i think i still have to add this class?
 };
 
 enableValidation(config);

@@ -97,8 +97,9 @@ transition: visibility 0.5s, opacity 0.5s linear;
   line-height: 15px;
   color: #ff0000;
   position:absolute;
-  top: 125px;
-  transition: opacity 0.3s;;
+  top: 145px;
+  transition: opacity 0.3s;
+  border-bottom: 10px solid red;
 
 }
 
