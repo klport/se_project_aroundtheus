@@ -31,6 +31,7 @@ function checkInputValidity(formEl, inputEl, options) {
 function hasInvalidInput (inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid)
 }
+
 // disableButton
 
 // enableButton
@@ -65,6 +66,7 @@ function enableValidation(options) {
     formEl.addEventListener("submit", (e) => {
       e.preventDefault();
     });
+
 
     setEventListeners(formEl, options);
     // look for all inputs inside of form

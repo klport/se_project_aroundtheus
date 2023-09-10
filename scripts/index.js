@@ -38,6 +38,7 @@ const addCardFormElement = addCardModal.querySelector(".modal__form");
 const previewImageModal = document.querySelector("#previewImageModal");
 const modalImage = document.querySelector("#modalImage");
 const modalText = document.querySelector("#modalText");
+
 // Buttons and Other DOM nodes
 
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -47,6 +48,7 @@ const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const closePreviewImageButton = document.querySelector("#previewCloseBtn");
+
 
 //Form Data
 const nameInput = profileFormElement.querySelector(".modal__input_type_name");
@@ -58,13 +60,32 @@ const cardTitleInput = addCardFormElement.querySelector(
 );
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
+const handleModalClick = (event) => {
+  if(event.target.classList.contains("modal_opened")) {
+    closeModal(event.target.closest(".modal"));
+  }
+};
+
 function closeModal(modal) {
+  
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeByEscape);
+  modal.removeEventListener("mousedown", handleModalClick);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeByEscape);
+  modal.addEventListener("mousedown", handleModalClick);
 }
+
+// function closeModal(modal) {
+//   modal.classList.remove("modal_opened");
+// }
+
+// function openModal(modal) {
+//   modal.classList.add("modal_opened");
+// }
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -118,6 +139,8 @@ function getCardElement(data) {
     openModal(previewImageModal);
   });
 
+
+  
   //  previewCloseButton.addEventListener("click", closeModal);
 
   likeButton.addEventListener("click", () => {
@@ -129,6 +152,13 @@ function getCardElement(data) {
   cardTitle.textContent = data.name;
 
   return cardElement;
+}
+
+function closeByEscape(evt) {
+  const modal = document.querySelector(".modal_opened");
+  if (evt.key === "Escape") {
+    closeModal(modal);
+  }
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
@@ -157,3 +187,16 @@ addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 closePreviewImageButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+
+
+// Keypress function
+
+function closeModalEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closePopup(openedModal);
+  }
+}
+
+// Modal Click Out
+
