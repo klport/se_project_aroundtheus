@@ -57,7 +57,7 @@
         <form class="modal__form">
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_name modal__input_error"
+              class="modal__input modal__input_type_name"
               type="text"
               id="user-name"
               name="title"
@@ -70,7 +70,7 @@
           </label>
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_description modal__input_error"
+              class="modal__input modal__input_type_description "
               type="text"
               id="user-description"
               name="description"
@@ -96,19 +96,22 @@
         <form class="modal__form" id="add-card-form">
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_title modal__input_error"
+              class="modal__input modal__input_type_title"
               type="text"
               id="place-name"
               name="title"
               placeholder="Title"
+              minlength="2"
+              maxlength="40"
               required
             />
-            <span class="modal__error" id="new-place-error"></span>
+            <span class="modal__error" id="place-name-error"></span>
           </label>
           <label class="modal__label">
             <input
-              class="modal__input modal__input_type_url modal__input_error"
-              type="text"
+              class="modal__input modal__input_type_url "
+              type="url"
+              id="new-url"
               name="url"
               placeholder="Image URL"
               required
