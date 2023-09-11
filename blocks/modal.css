@@ -112,6 +112,11 @@ transition: visibility 0.5s, opacity 0.5s linear;
   border-bottom: 1px solid #ff0000;
 }
 
+.modal__button_disabled {
+  opacity: 10%;
+}
+
+
 .modal__form-item:last-of-type {
   margin-bottom: 48px;
 }
