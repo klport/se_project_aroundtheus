@@ -37,18 +37,21 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
+    console.log(hasInvalidInput(inputEls));
+    console.log("test");
     submitButton.classList.add(inactiveButtonClass);
     submitButton.disabled = true;
     return;
   }
-  submitButton.classList.add(inactiveButtonClass);
+
+  submitButton.classList.remove(inactiveButtonClass);
   submitButton.disabled = false;
 }
 
 function setEventListeners(formEl, options) {
-  const { inputSelector } = options;
+  const { inputSelector, submitButtonSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
-  const submitButton = formEl.querySelector("submitButtonSelector");
+  const submitButton = formEl.querySelector(submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
