@@ -1,13 +1,13 @@
-class FormValidator {
- constructor (settings, formElement) {
-  this._inputSelector = settings.inputSelector ;  
-  this._submitButtonSelector = settings.submitButtonSelector ; 
-  this._inactiveButtonClass = settings.inactiveButtonClass ;  
-  this._inputErrorClass = settings.inputErrorClass ;  
-  this._errorClass = settings.errorClass;  
+export class FormValidator {
+  constructor (settings, formElement) {
+    this._inputSelector = settings.inputSelector ;  
+    this._submitButtonSelector = settings.submitButtonSelector ; 
+    this._inactiveButtonClass = settings.inactiveButtonClass ;  
+    this._inputErrorClass = settings.inputErrorClass ;  
+    this._errorClass = settings.errorClass;  
 
-  this._form = formElement;
- }
+    this._form = formElement;
+  }
 
  toggleButtonState (){
   
@@ -16,10 +16,9 @@ class FormValidator {
  
 
 _setEventListener () {
- this._inputList = Array.from(this.form.querySelectorAll(this.inputSelector))
- this._buttonElement = this.form.querySelector(this._submitButtonSelector))
-  
-})
+  this._inputList = Array.from(this.form.querySelectorAll(this.inputSelector))
+  this._buttonElement = this.form.querySelector(this._submitButtonSelector);
+};
 
  enableValidation(){
   this._formEl.addEventListener("submit", (e) => {
@@ -28,7 +27,3 @@ _setEventListener () {
     setEventListeners(formEl, options);
  }
 }
-
-
-const editFormValidator = new FormValidator();
-editFormValidator.enableValidation();

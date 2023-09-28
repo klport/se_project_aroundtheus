@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -32,7 +33,10 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-const card = new Card(cardData);
+
+
+const card = new Card(cardData,     "#card-template");
+card.getView();
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -126,10 +130,11 @@ function getCardElement(data) {
   //find the delete button
   //add the event listener to the delete button
   //cardElement.remove();
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+
+  //const deleteButton = cardElement.querySelector(".card__delete-button");
+  //deleteButton.addEventListener("click", () => {
+   // cardElement.remove();
+  //});
 
   // add click listener to the cardImage element
   //open modal with **previewImageModal - add it into the html
@@ -184,3 +189,6 @@ addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 closePreviewImageButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+
+const editFormValidator = new FormValidator();
+editFormValidator.enableValidation();
