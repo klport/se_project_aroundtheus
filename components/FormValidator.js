@@ -6,24 +6,37 @@ export class FormValidator {
     this._inputErrorClass = settings.inputErrorClass ;  
     this._errorClass = settings.errorClass;  
 
-    this._form = formElement;
+    this._formEl = formElement;
   }
 
  toggleButtonState (){
   
  }
 
- 
+setEventListeners() {
+  this._inputEls = [...this._formEl.querySelectorAll(this._inputSelector)];
+  this._submitButton = this._formEl.querySelector(this._submitButtonSelector);
+  this._inputEls.forEach((inputEl) => {
+    inputEl.addEventListener("input", (e) => {
+      this._checkInputValidity(inputEl);
+      this._toggleButtonState(submitButton); 
+    });
+  });
+}
 
-_setEventListener () {
-  this._inputList = Array.from(this.form.querySelectorAll(this.inputSelector))
-  this._buttonElement = this.form.querySelector(this._submitButtonSelector);
-};
+ 
+checkInputValidity() {
+  if (!inputEl.validity.valid) {
+    return showInputError(formEl, inputEl, options);
+  }
+  this._hideInputError(formEl, inputEl, options);
+}
+
 
  enableValidation(){
   this._formEl.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    setEventListeners(formEl, options);
+    this._setEventListeners();
  }
 }

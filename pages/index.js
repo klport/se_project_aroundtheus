@@ -35,7 +35,7 @@ const cardData = {
 
 
 
-const card = new Card(cardData,     "#card-template");
+const card = new Card(cardData, "#card-template");
 card.getView();
 
 const cardTemplate = document
@@ -190,5 +190,16 @@ closePreviewImageButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
 
-const editFormValidator = new FormValidator();
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_error",
+  errorClass: ".modal_error_visible",
+};
+
+const editFormElement =document.querySelector('#edit-profile-form');
+
+const editFormValidator = new FormValidator(config, editFormElement);
 editFormValidator.enableValidation();
