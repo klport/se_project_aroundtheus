@@ -7,18 +7,18 @@
 //syntatic sugar
 //object destructuring?
 
-function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
-  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.add(inputErrorClass);
-  errorMessageEl.textContent = inputEl.validationMessage;
-  errorMessageEl.classList.add(errorClass);
-}
-function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
-  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.remove(inputErrorClass);
-  errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(errorClass);
-}
+//function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+ // const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+ // inputEl.classList.add(inputErrorClass);
+ // errorMessageEl.textContent = inputEl.validationMessage;
+ // errorMessageEl.classList.add(errorClass);
+//}
+//function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+ // const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+ // inputEl.classList.remove(inputErrorClass);
+ // errorMessageEl.textContent = "";
+ // errorMessageEl.classList.remove(errorClass);
+//}
 
 //function checkInputValidity(formEl, inputEl, options) {
  /// if (!inputEl.validity.valid) {
@@ -27,26 +27,26 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
  /// hideInputError(formEl, inputEl, options);
 ///}
 
-function hasInvalidInput(inputList) {
-  return !inputList.every((inputEl) => inputEl.validity.valid);
-}
+//function hasInvalidInput(inputList) {
+ // return !inputList.every((inputEl) => inputEl.validity.valid);
+//}
 
 // disableButton
 
 // enableButton
 
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  if (hasInvalidInput(inputEls)) {
-    console.log(hasInvalidInput(inputEls));
-    console.log("test");
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.disabled = true;
-    return;
-  }
+///function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+ /// if (hasInvalidInput(inputEls)) {
+  ///  console.log(hasInvalidInput(inputEls));
+  ///  console.log("test");
+   /// submitButton.classList.add(inactiveButtonClass);
+  ///  submitButton.disabled = true;
+  ///  return;
+ // }
 
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
-}
+  //submitButton.classList.remove(inactiveButtonClass);
+  //submitButton.disabled = false;
+//}
 
 /*function setEventListeners(formEl, options) {
   const { inputSelector, submitButtonSelector } = options;
@@ -60,14 +60,14 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   }); 
 }*/
 
-function enableValidation(options) {
-  const formEls = [...document.querySelectorAll(options.formSelector)];
-  formEls.forEach((formEl) => {
-    formEl.addEventListener("submit", (e) => {
-      e.preventDefault();
-    });
+//function enableValidation(options) {
+  //const formEls = [...document.querySelectorAll(options.formSelector)];
+ // formEls.forEach((formEl) => {
+  //  formEl.addEventListener("submit", (e) => {
+  //    e.preventDefault();
+  //  });
 
-    setEventListeners(formEl, options);
+ //   setEventListeners(formEl, options);
     // look for all inputs inside of form
     //loop through all the inputs to see if all are valid.
     // in input is !valid
@@ -78,8 +78,8 @@ function enableValidation(options) {
     //if all inputs are valid
     //enable button
     //reset error messages
-  });
-}
+//  });
+//}
 
 /*const config = {
   formSelector: ".modal__form",
@@ -90,4 +90,6 @@ function enableValidation(options) {
   errorClass: ".modal_error_visible", 
 };
 */
+
+
 enableValidation(config);
