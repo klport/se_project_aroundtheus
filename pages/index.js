@@ -199,7 +199,12 @@ const config = {
   errorClass: ".modal_error_visible",
 };
 
-const editFormElement =document.querySelector('#edit-profile-form');
+const editFormElement = document.querySelector('#edit-profile-form');
 
 const editFormValidator = new FormValidator(config, editFormElement);
 editFormValidator.enableValidation();
+
+//const addCardFormElement = document.querySelector("#add-card-form");
+
+//const addFormValidtor = new FormValidator(config, addFormElement)
+//addFormValidtor.enableValidation();
