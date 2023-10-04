@@ -160,6 +160,12 @@ function getCardElement(data) {
 
   return cardElement;
 }
+function handleImagePreview(name, link) {
+  modalImage.src = link;
+  modalImage.alt = name;
+  modalText.textContent = name;
+  openModal(previewImageModal);
+}
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", () => {
@@ -181,7 +187,7 @@ addCardModalCloseButton.addEventListener("click", () =>
   closeModal(addCardModal)
 );
 
-initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+//
 
 //Form listeners
 
@@ -207,3 +213,10 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(config, addCardFormElement);
 addFormValidator.enableValidation();
+
+//initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#card-template", handleImagePreview);
+  const cardElement = card.getView();
+  cardsWrap.append(cardElement);
+});
