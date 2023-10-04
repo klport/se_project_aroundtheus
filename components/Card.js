@@ -18,13 +18,12 @@ export default class Card {
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
         this._handleDeleteCard();
-      })
+      });
   }
 
-_handleDeleteCard(){
-  this._cardElement.remove(); 
-   
-}
+  _handleDeleteCard() {
+    this._cardElement.remove();
+  }
 
   _handleLikeIcon() {
     this._cardElement
@@ -44,4 +43,3 @@ _handleDeleteCard(){
     //return the card
   }
 }
-

@@ -33,8 +33,6 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-
-
 const card = new Card(cardData, "#card-template");
 card.getView();
 
@@ -133,7 +131,7 @@ function getCardElement(data) {
 
   //const deleteButton = cardElement.querySelector(".card__delete-button");
   //deleteButton.addEventListener("click", () => {
-   // cardElement.remove();
+  // cardElement.remove();
   //});
 
   // add click listener to the cardImage element
@@ -199,12 +197,12 @@ const config = {
   errorClass: ".modal_error_visible",
 };
 
-const editFormElement = document.querySelector('#edit-profile-form');
+const editFormElement = document.querySelector("#edit-profile-form");
 
 const editFormValidator = new FormValidator(config, editFormElement);
 editFormValidator.enableValidation();
 
-const addCardFormElement = document.querySelector('#add-card-form');
+//const addCardFormElement = document.querySelector('#add-card-form');
 
 const addFormValidator = new FormValidator(config, addCardFormElement);
 addFormValidator.enableValidation();
