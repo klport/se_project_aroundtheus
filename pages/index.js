@@ -173,7 +173,10 @@ profileModalCloseButton.addEventListener("click", () =>
 );
 
 // Add new card button
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+addNewCardButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
+  openModal(addCardModal);
+});
 addCardModalCloseButton.addEventListener("click", () =>
   closeModal(addCardModal)
 );
@@ -201,8 +204,6 @@ const editFormElement = document.querySelector("#edit-profile-form");
 
 const editFormValidator = new FormValidator(config, editFormElement);
 editFormValidator.enableValidation();
-
-//const addCardFormElement = document.querySelector('#add-card-form');
 
 const addFormValidator = new FormValidator(config, addCardFormElement);
 addFormValidator.enableValidation();
