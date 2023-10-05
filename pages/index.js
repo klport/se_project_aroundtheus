@@ -33,13 +33,6 @@ const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-const card = new Card(cardData, "#card-template");
-card.getView();
-
-const cardTemplate = document
-  .querySelector("#card-template")
-  .content.querySelector(".card");
-
 //Wrapppers
 const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
@@ -109,9 +102,8 @@ function handleProfileFormSubmit(evt) {
 
 function handleCardAddSubmit(evt) {
   evt.preventDefault();
-  const cardData = {name:cardTitleInput.value, link:cardUrlInput.value};
-  const card = new Card(cardData, "#card-template", handleImagePreview);
-  const cardElement = card.getView();
+  const cardData = { name: cardTitleInput.value, link: cardUrlInput.value };
+  const cardElement = createCard(cardData);
   cardsWrap.prepend(cardElement);
 
   closeModal(addCardModal);
@@ -126,30 +118,12 @@ function getCardElement(data) {
   const cardTitle = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
 
-  //find the delete button
-  //add the event listener to the delete button
-  //cardElement.remove();
-
-  //const deleteButton = cardElement.querySelector(".card__delete-button");
-  //deleteButton.addEventListener("click", () => {
-  // cardElement.remove();
-  //});
-
-  // add click listener to the cardImage element
-  //open modal with **previewImageModal - add it into the html
-
-  //function openModal(modal) {
-  //modal.classList.add("modal_opened");
-  //
-
   cardImage.addEventListener("click", () => {
     modalImage.src = data.link;
     modalImage.alt = data.name;
     modalText.textContent = data.name;
     openModal(previewImageModal);
   });
-
-  //  previewCloseButton.addEventListener("click", closeModal);
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
@@ -215,9 +189,13 @@ editFormValidator.enableValidation();
 const addFormValidator = new FormValidator(config, addCardFormElement);
 addFormValidator.enableValidation();
 
-//initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", handleImagePreview);
-  const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   cardsWrap.append(cardElement);
 });
+
+function createCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImagePreview);
+  return card.getView();
+  return cardElement;
+}
