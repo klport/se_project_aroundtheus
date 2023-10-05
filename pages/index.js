@@ -109,9 +109,10 @@ function handleProfileFormSubmit(evt) {
 
 function handleCardAddSubmit(evt) {
   evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardsWrap);
+  const cardData = {name:cardTitleInput.value, link:cardUrlInput.value};
+  const card = new Card(cardData, "#card-template", handleImagePreview);
+  const cardElement = card.getView();
+  cardsWrap.prepend(cardElement);
 
   closeModal(addCardModal);
   addCardFormElement.reset();
