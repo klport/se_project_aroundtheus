@@ -28,10 +28,6 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
 
 //Wrapppers
 const cardsWrap = document.querySelector(".cards__list");
@@ -180,8 +176,6 @@ const config = {
   inputErrorClass: "modal__input_error",
   errorClass: ".modal_error_visible",
 };
-
-const editFormElement = document.querySelector("#edit-profile-form");
 
 const editFormValidator = new FormValidator(config, editFormElement);
 editFormValidator.enableValidation();
