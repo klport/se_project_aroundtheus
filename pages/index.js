@@ -84,10 +84,6 @@ function closeByEscape(evt) {
   }
 }
 
-function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
-}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -106,31 +102,7 @@ function handleCardAddSubmit(evt) {
   addCardFormElement.reset();
 }
 
-function getCardElement(data) {
-  // clone the template element with all its content and store it in a cardElement variable
-  // access the card title and image and store them in variables
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
 
-  cardImage.addEventListener("click", () => {
-    modalImage.src = data.link;
-    modalImage.alt = data.name;
-    modalText.textContent = data.name;
-    openModal(previewImageModal);
-  });
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
-
-  return cardElement;
-}
 function handleImagePreview(name, link) {
   modalImage.src = link;
   modalImage.alt = name;
@@ -177,8 +149,8 @@ const config = {
   errorClass: ".modal_error_visible",
 };
 
-const editFormValidator = new FormValidator(config, editFormElement);
-editFormValidator.enableValidation();
+const profileFormValidator = new FormValidator(config, profileFormElement);
+profileFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(config, addCardFormElement);
 addFormValidator.enableValidation();
