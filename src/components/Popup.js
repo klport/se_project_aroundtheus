@@ -1,4 +1,4 @@
-export default  class Popup {
+export default class Popup {
  constructor({ popupSelector}){
   this._popupElement = document.querySelector(popupSelector);
  }
@@ -15,7 +15,9 @@ export default  class Popup {
    // listens for esc button - why is it private?
  }
 
- setEventListeners()
-   // sets event listeners
+ setEventListeners(){
+   // sets event listeners - adds a click event listener to the close icon of the popup. 
+
+ }
 
 }
