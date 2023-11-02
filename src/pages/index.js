@@ -1,5 +1,8 @@
-import Card from "./src/components/Card.js";
-import { FormValidator } from "./src/components/FormValidator.js";
+import Card from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+
+import "./index.css";
+//import avatarSrc from "./images/jacques-cousteau(1).jpg";
 
 const initialCards = [
   {
@@ -27,7 +30,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg ",
   },
 ];
-
 
 //Wrapppers
 const cardsWrap = document.querySelector(".cards__list");
@@ -84,7 +86,6 @@ function closeByEscape(evt) {
   }
 }
 
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -101,7 +102,6 @@ function handleCardAddSubmit(evt) {
   closeModal(addCardModal);
   addCardFormElement.reset();
 }
-
 
 function handleImagePreview(name, link) {
   modalImage.src = link;
