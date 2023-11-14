@@ -55,6 +55,13 @@ export class FormValidator {
     errorMessageEl.classList.remove(this._errorClass);
   }
 
+  resetValidation() {
+    this.toggleButtonState()
+    this._inputEls.forEach((input) => {
+      this._hideInputError(input)
+    })
+  }
+
   enableValidation() {
     this._formEl.addEventListener("submit", (e) => {
       e.preventDefault();
