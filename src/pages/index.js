@@ -1,14 +1,11 @@
 import Card from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from '../components/UserInfo.js';
+import UserInfo from "../components/UserInfo.js";
 import "./index.css";
 //import avatarSrc from "./images/jacques-cousteau(1).jpg";
-import PopupWithImage from '../components/PopupWithImage.js';
-import Section from '../components/Section.js';
-
-
-
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
 
 const initialCards = [
   {
@@ -37,7 +34,7 @@ const initialCards = [
   },
 ];
 
-//Wrapppers
+//Elements
 const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
 //const addCardModal = document.querySelector("#add-card-modal");
@@ -91,112 +88,65 @@ const profileEditModal = new PopupWithForm(
 
 const addCardModal = new PopupWithForm("#add-card-modal", handleCardAddSubmit);
 
-const previewImageModal = new PopupWithImage("#previewImageModal");
+export const previewImageModal = new PopupWithImage("#previewImageModal");
+// call setEventListeners
 
-const profileUserInfo = new UserInfo(".profile__title", ".profile__description");
+const profileUserInfo = new UserInfo(
+  ".profile__title",
+  ".profile__description"
+);
 
-const cardSection = new Section({ items:initialCards, renderer: createCard}, ".cards__list");
+const cardSection = new Section(
+  { items: initialCards, renderer: createCard },
+  ".cards__list"
+);
 
 //functions
+
 function handleProfileFormSubmit(formData) {
   console.log(formData);
-}
-const handleModalClick = (event) => {
-  if (event.target.classList.contains("modal_opened")) {
-    closeModal(event.target);
-  }
-};
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeByEscape);
-  modal.removeEventListener("mousedown", handleModalClick);
+  profileUserInfo.setUserInfo(formData.title, formData.description);
 }
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeByEscape);
-  modal.addEventListener("mousedown", handleModalClick);
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector(".modal_opened");
-    closeModal(modal);
-  }
-}
-
-// function handleProfileFormSubmit() {
-//   profileTitle.textContent = nameInput.value;
-//   profileDescription.textContent = jobInput.value;
-// }
-
-function handleCardAddSubmit(evt) {
-  evt.preventDefault();
-  const cardData = { name: cardTitleInput.value, link: cardUrlInput.value };
-  const cardElement = createCard(cardData);
-  cardsWrap.prepend(cardElement);
-
-  closeModal(addCardModal);
-  addCardFormElement.reset();
+function handleCardAddSubmit(inputValues) {
+  const cardData = { name: inputValues.title, link: inputValues.url };
+  cardSection.addItem(cardData);
+  addFormValidator.resetValidation();
 }
 
 function handleImagePreview(name, link) {
-  modalImage.src = link;
-  modalImage.alt = name;
-  modalText.textContent = name;
-  openModal(previewImageModal);
+  previewImageModal.open(name, link);
 }
 
 //event listeners
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", () => {
-  const user = profileUserInfo.getUserInfo();
-  console.log(user)
-  nameInput.value = user.name;
-  jobInput.value = user.description;
-  // openModal(editProfileModal);
+  const userInfo = profileUserInfo.getUserInfo();
   profileFormValidator.resetValidation();
+  profileEditModal.setInputValues(userInfo);
   profileEditModal.open();
 });
-
-// profileModalCloseButton.addEventListener("click", () =>
-//   closeModal(editProfileModal)
-// );
 
 // Add new card button
 addNewCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
-  openModal(addCardModal);
+  addCardModal.open();
 });
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
 
-//
-
-//Form listeners
-
-addCardFormElement.addEventListener("submit", handleCardAddSubmit);
-
-closePreviewImageButton.addEventListener("click", () =>
-  closeModal(previewImageModal)
-);
+//event listeners
 
 function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImagePreview);
   return card.getView();
-  
 }
 
 //Initialization
-
-// initialCards.forEach((cardData) => {
-//   const cardElement = createCard(cardData);
-//   cardsWrap.append(cardElement);
-// });
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
 profileEditModal.setEventListeners();
 cardSection.renderItems();
+
+const card = new Card(initialCards[0], "#card-template", () => {
+  console.log("call image");
+});
+console.log(card);
