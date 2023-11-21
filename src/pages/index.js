@@ -108,10 +108,6 @@ function createCard(cardData) {
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
-profileEditModal.setEventListeners();
 cardSection.renderItems();
 
-const card = new Card(initialCards[0], "#card-template", () => {
-  console.log("call image");
-});
-console.log(card);
+
