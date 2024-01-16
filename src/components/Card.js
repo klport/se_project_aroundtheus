@@ -28,12 +28,11 @@ export default class Card {
 
   _handleDeleteCard() {
     this._cardElement.remove();
+    this._cardElement = null;
   }
 
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   getView() {
@@ -48,6 +47,9 @@ export default class Card {
     this._cardTitle.textContent = this._name;
     this._cardImage.alt = this._name;
     //get the card view
+
+    this._likeButton = this._cardElement.querySelector(".card__like-button");
+
     //set event listenner
     this._setEventListeners();
     //return the card

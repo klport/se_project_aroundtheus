@@ -7,6 +7,20 @@ import "./index.css";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import { initialCards, config } from "../utils/constants.js";
+
+import Api from "./API.js";
+
+
+//API 
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "921767a7-5253-4397-9674-d9dd7ed6801d",
+    "Content-Type": "application/json",
+  },
+});
+
 //Elements
 const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
@@ -34,10 +48,6 @@ const nameInput = profileFormElement.querySelector(".modal__input_type_name");
 const jobInput = profileFormElement.querySelector(
   ".modal__input_type_description"
 );
-// const cardTitleInput = addCardFormElement.querySelector(
-//   ".modal__input_type_title"
-// );
-//const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 //objects
 
@@ -54,6 +64,7 @@ const profileEditModal = new PopupWithForm(
 const addCardModal = new PopupWithForm("#add-card-modal", handleCardAddSubmit);
 
 export const previewImageModal = new PopupWithImage("#previewImageModal");
+
 // call setEventListeners
 
 const profileUserInfo = new UserInfo(
@@ -110,4 +121,17 @@ profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
 cardSection.renderItems();
 
+//Gets user info from api and sets it locally on the page
+api.getUserInfo().then((data) => {
+  profileUserInfo.setUserInfo(data.name, data.about);
+})
+  .catch((err) => {
+  console.error(err);
+  });
 
+//Gets initial cards from api
+api.getInitialCards().then((cardData) => {
+  console.log(cardData)
+
+
+});
