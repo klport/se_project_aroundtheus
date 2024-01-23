@@ -7,17 +7,23 @@ class Section {
 
   renderItems() {
     this._items.forEach((data) => {
-      this.addItem(data, "append");
+      // this.addItem(data, "append");
+      const cardEl = this._renderer(data);
+      this.addItem(cardEl);
     });
   }
 
-  addItem(data, placement = "prepend") {
-    const element = this._renderer(data);
-    if (placement === "append") {
-      this._container.append(element);
-    } else if (placement === "prepend") {
-      this._container.prepend(element);
-    }
+  // addItem(data, placement = "prepend") {
+  //   const element = this._renderer(data);
+  //   if (placement === "append") {
+  //     this._container.append(element);
+  //   } else if (placement === "prepend") {
+  //     this._container.prepend(element);
+  //   }
+  // }
+
+  addItem(data) {
+    this._container.prepend(data);
   }
 }
 

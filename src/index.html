@@ -25,7 +25,7 @@
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 class="profile__title"></h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
@@ -144,6 +144,24 @@
       </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-confirmation-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="add-card-close-button"
+          type="button"
+        ></button>
+        <h3 class="modal__title">Are you sure?</h3>
+        <form 
+        class="modal__form" 
+        id="delete-card-confirmation-form"
+        >
+          <button class="button modal__button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+    
     <!-- card template -->
     <template id="card-template">
       <li class="card">
