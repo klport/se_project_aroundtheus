@@ -44,19 +44,18 @@ export default class API {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/cardId`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      //need to add the variable of cardID
       method: "DELETE",
       headers: this._headers,
     }).then((res) => this._checkResponse(res));
   }
-}
-  // updateUserImage(imageURL) {
-  //   return fetch(`${this._baseUrl}/users/me/avatar`, {
-  //     method: "PATCH",
-  //     headers: this._headers,
-  //     body: JSON.stringify({
-  //       avatar: imageURL,
-  //     }),
-  //   }).then((res) => this._checkResponse(res));
-  // }
 
+  updateAvatar(link) {
+    return fetch(`${this._baseUrl}/v1/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(link),
+    }).then((res) => this._checkResponse(res));
+  }
+}

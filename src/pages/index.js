@@ -8,6 +8,8 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import { initialCards, config } from "../utils/constants.js";
 
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+
 import Api from "./API.js";
 
 //API
@@ -25,10 +27,13 @@ const cardsWrap = document.querySelector(".cards__list");
 const editProfileModal = document.querySelector("#edit-modal");
 //const addCardModal = document.querySelector("#add-card-modal");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
+
 const addCardFormElement = document.querySelector("#add-card-form");
 //const previewImageModal = document.querySelector("#previewImageModal");
 const modalImage = document.querySelector("#modalImage");
 const modalText = document.querySelector("#modalText");
+
+const updateAvatarForm = document.querySelector("#change-profile-picture-form"); 
 
 // Buttons and Other DOM nodes
 
@@ -57,6 +62,16 @@ const addFormValidator = new FormValidator(config, addCardFormElement);
 const profileEditModal = new PopupWithForm(
   "#edit-modal",
   handleProfileFormSubmit
+);
+
+const editAvatarModal = new PopupWithForm (
+  "#change-Profile-Picture-ModalContainer", handleAvatarUpdateSubmit
+);
+
+const avatarUpdateValidator = new FormValidator (config, updateAvatarForm);
+
+const deleteConfirmationModal = new PopupWithConfirmation(
+  "#delete-confirmation-modal"
 );
 
 const addCardModal = new PopupWithForm("#add-card-modal", handleCardAddSubmit);
@@ -93,12 +108,33 @@ function handleCardAddSubmit(inputValues) {
     const cardElement = createCard(res);
     cardSection.addItem(cardElement);
     addFormValidator.resetValidation();
-  })
-
+  });
 }
 
 function handleImagePreview(name, link) {
   previewImageModal.open(name, link);
+}
+//runs when clicking the trash button
+function handleDeleteClick(card) {
+  //runs when clicking the yes button
+  function deleteCard() {
+    //delete the card on the server.
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        //closes modal
+        deleteConfirmationModal.close();
+        //deletes card on the UI
+        card.handleDeleteCardLocally();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert(`${err} Failed to delete card`);
+      });
+  }
+
+  deleteConfirmationModal.open();
+  deleteConfirmationModal.setSubmitHandler(deleteCard);
 }
 
 //event listeners
@@ -118,7 +154,12 @@ addNewCardButton.addEventListener("click", () => {
 //event listeners
 
 function createCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImagePreview);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImagePreview,
+    handleDeleteClick
+  );
   return card.getView();
 }
 
@@ -126,6 +167,7 @@ function createCard(cardData) {
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
+avatarUpdateValidator.enableValidation();
 
 // //Gets user info from api and sets it locally on the page - runs on page load. sets it locally
 api
@@ -144,6 +186,7 @@ let cardSection; // default value is undefined;
 api
   .getInitialCards()
   .then((cards) => {
+    console.log(">>CARDS", cards);
     cardSection = new Section(
       { items: cards, renderer: createCard },
       ".cards__list"
@@ -151,13 +194,14 @@ api
 
     cardSection.renderItems();
   })
-  .catch(); // initial respone is supposed to be empty
+  .catch(); 
 
-//Edit The Profile ???
-// api
-//   .updateUserInfo({ title: "Some Title", description: "Some Description" })
-//   .then((data) => {});
-
-
-//get initial cards 
-//delete cards
+//Edit The Profile Avatar  
+function handleAvatarFormSubmit(inputValues) {
+api
+  .updateAvatar(inputValues)
+  .then((res) => {
+    console.log(res)
+  });
+  avatarModal.close();
+}

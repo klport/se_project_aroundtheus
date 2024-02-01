@@ -33,6 +33,11 @@
   display: grid;
   box-sizing: border-box;
 }
+
+#deleteModalContainer {
+  height: 181px;
+}
+
 .modal__text {
   color: #fff;
   font-family: Inter;

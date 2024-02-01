@@ -25,6 +25,18 @@ class Section {
   addItem(data) {
     this._container.prepend(data);
   }
+
+  // setItems{
+
+  // }
+
+  // deleteItems{
+  //   this._items.forEach((item)=>)
+  //   console.log(item));
+
+  //   //delete Item using id, use a function that compares. filter is a method run on an array, returns a new array for which the filter was TRUE 
+
+  // }
 }
 
 export default Section;

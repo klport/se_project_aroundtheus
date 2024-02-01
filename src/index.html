@@ -18,12 +18,15 @@
 
       <main class="content">
         <section class="profile page__section">
-          <img
+          <div class="profile_avatar_container">
+            <img
             src="<%= require('./images/jacques-cousteau(1).jpg')%>"
             alt="Avatar"
             id="profile-avatar"
             class="profile__image"
-          />
+            />
+            <button class="profile_image_edit_button"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title"></h1>
             <button
@@ -146,22 +149,46 @@
 
     <!-- Delete Confirmation Modal -->
     <div class="modal" id="delete-confirmation-modal">
-      <div class="modal__container">
+      <div class="modal__container" id="deleteModalContainer">
         <button
           class="modal__close"
-          id="add-card-close-button"
+          id="delete-confirmation-close-button"
           type="button"
         ></button>
-        <h3 class="modal__title">Are you sure?</h3>
-        <form 
-        class="modal__form" 
-        id="delete-card-confirmation-form"
-        >
+        <h2 class="modal__title">Are you sure?</h2>
+        <form class="modal__form" id="delete-card-confirmation-form">
           <button class="button modal__button" type="submit">Yes</button>
         </form>
       </div>
     </div>
-    
+
+    <!-- Change Profile Picture MODAL -->
+    <div class="modal" id="change-profile-picture-modal">
+      <div class="modal__container" id="change-Profile-Picture-ModalContainer">
+        <button
+          class="modal__close"
+          id="change-profile-picture-close-button"
+          type="button"
+        ></button>
+        <h2 class="modal__title">Change Profile Picture</h2>
+        <form class="modal__form" id="change-profile-picture-form">
+          <label class="modal__label">
+            <input
+              class="modal__input modal__input_type_url"
+              type="url"
+              id="new-url"
+              name="url"
+              placeholder="Image URL"
+              required
+            />
+            <span class="modal__error" id="new-url-error"></span>
+          </label>
+
+          <button class="button modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!-- card template -->
     <template id="card-template">
       <li class="card">
