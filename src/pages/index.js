@@ -33,7 +33,7 @@ const addCardFormElement = document.querySelector("#add-card-form");
 const modalImage = document.querySelector("#modalImage");
 const modalText = document.querySelector("#modalText");
 
-const updateAvatarForm = document.querySelector("#change-profile-picture-form"); 
+const updateAvatarForm = document.querySelector("#change-profile-picture-form");
 
 // Buttons and Other DOM nodes
 
@@ -64,11 +64,13 @@ const profileEditModal = new PopupWithForm(
   handleProfileFormSubmit
 );
 
-const editAvatarModal = new PopupWithForm (
-  "#change-Profile-Picture-ModalContainer", handleAvatarUpdateSubmit
+const editAvatarModal = new PopupWithForm(
+  "#change-profile-picture-modal",
+  handleAvatarFormSubmit //create a function of this name that runs after I submit the form//
 );
 
-const avatarUpdateValidator = new FormValidator (config, updateAvatarForm);
+
+const avatarUpdateValidator = new FormValidator(config, updateAvatarForm);
 
 const deleteConfirmationModal = new PopupWithConfirmation(
   "#delete-confirmation-modal"
@@ -137,6 +139,12 @@ function handleDeleteClick(card) {
   deleteConfirmationModal.setSubmitHandler(deleteCard);
 }
 
+const avatarButton = document.querySelector(".profile_image_edit_button");
+
+avatarButton.addEventListener("click", () => {
+  editAvatarModal.open();
+});
+
 //event listeners
 profileEditButton.addEventListener("click", () => {
   const userInfo = profileUserInfo.getUserInfo();
@@ -194,14 +202,13 @@ api
 
     cardSection.renderItems();
   })
-  .catch(); 
+  .catch();
 
-//Edit The Profile Avatar  
+//Edit The Profile Avatar
 function handleAvatarFormSubmit(inputValues) {
-api
-  .updateAvatar(inputValues)
-  .then((res) => {
-    console.log(res)
+  api.updateAvatar(inputValues).then((res) => {
+    console.log(res); //??  set the SRC of the appropriate element so that the new image displays
+    userInfo.setAvatar(res.avatar)
   });
-  avatarModal.close();
+  editAvatarModal.close();
 }

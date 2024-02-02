@@ -14,6 +14,14 @@ export default class UserInfo {
     this._nameElement.textContent = userName;
     this._descriptionElement.textContent = userDescription;
   }
+
+  setAvatar(link) {
+    // set src of avatar. just one line. 
+   // look at whats been documented, and looks like set userInfo code but set to avatar link source 
+
+  //  this._avatarLink.updateAvatar = link; ??
+
+  }
 }
 
 
