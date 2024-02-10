@@ -9,7 +9,6 @@ import Section from "../components/Section.js";
 import { initialCards, config } from "../utils/constants.js";
 
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-
 import Api from "./API.js";
 
 //API
@@ -69,7 +68,6 @@ const editAvatarModal = new PopupWithForm(
   handleAvatarFormSubmit //create a function of this name that runs after I submit the form//
 );
 
-
 const avatarUpdateValidator = new FormValidator(config, updateAvatarForm);
 
 const deleteConfirmationModal = new PopupWithConfirmation(
@@ -84,7 +82,8 @@ export const previewImageModal = new PopupWithImage("#previewImageModal");
 
 const profileUserInfo = new UserInfo(
   ".profile__title",
-  ".profile__description"
+  ".profile__description",
+  ".profile__image"
 );
 
 //functions
@@ -134,7 +133,6 @@ function handleDeleteClick(card) {
         alert(`${err} Failed to delete card`);
       });
   }
-
   deleteConfirmationModal.open();
   deleteConfirmationModal.setSubmitHandler(deleteCard);
 }
@@ -182,6 +180,7 @@ api
   .getUserInfo()
   .then((data) => {
     profileUserInfo.setUserInfo(data.name, data.about);
+    profileUserInfo.setAvatar(data.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -206,9 +205,24 @@ api
 
 //Edit The Profile Avatar
 function handleAvatarFormSubmit(inputValues) {
-  api.updateAvatar(inputValues).then((res) => {
-    console.log(res); //??  set the SRC of the appropriate element so that the new image displays
-    userInfo.setAvatar(res.avatar)
-  });
-  editAvatarModal.close();
+  // Find the submit button in the form by class name
+  const submitButton = document.getElementsByClassName("modal__button")[3];
+
+  // Update the text before making the API call
+  submitButton.textContent = "Saving...";
+
+  api
+    .updateAvatar(inputValues)
+    .then((res) => {
+      console.log(res);
+      profileUserInfo.setAvatar(res.avatar);
+      editAvatarModal.close();
+    })
+    .catch((error) => {
+      console.log(error);
+      alert(`failed to change avatar ${error}`);
+    });
+  // .finally(() =>{
+
+  // })
 }

@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(nameSelector, descriptionSelector) {
+  constructor(nameSelector, descriptionSelector, avatarSelector) {
     this._nameElement = document.querySelector(nameSelector);
     this._descriptionElement = document.querySelector(descriptionSelector);
+    this._avatarElement = document.querySelector(avatarSelector);
   }
   getUserInfo() {
     return {
@@ -16,15 +17,6 @@ export default class UserInfo {
   }
 
   setAvatar(link) {
-    // set src of avatar. just one line. 
-   // look at whats been documented, and looks like set userInfo code but set to avatar link source 
-
-  //  this._avatarLink.updateAvatar = link; ??
-
+    this._avatarElement.src = link;
   }
 }
-
-
-
-
-
