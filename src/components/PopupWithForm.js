@@ -9,6 +9,10 @@ export default class PopupWithForm extends Popup {
     this.setEventListeners();
   }
 
+  reset() {
+    this._form.reset();
+  }
+
   _getInputValues() {
     const formValues = {};
     this._inputList.forEach((input) => {
@@ -25,14 +29,14 @@ export default class PopupWithForm extends Popup {
     }
   }
 
-  //??? saving = (saving, savingText = "Saving...")??? = {
-  //   if(saving) {
-  //     this._popupElement.addEventListener("submit", (e)=> {
-  //       e.preventDefault();
-  //       this._handleFormSubmit - I have no idea
-  //     })
-  //   }
-  // }
+  //   // Find the submit button in the form by class name
+  // const submitButton = updateAvatarForm.querySelector(".modal__button");
+  // // Update the text before making the API call
+  // submitButton.textContent = "Saving...";
+
+  setButtonText(buttonText) {
+    this._form.querySelector(".modal__button").textContent = buttonText;
+  }
 
   setEventListeners() {
     this._form.addEventListener("submit", (evt) => {

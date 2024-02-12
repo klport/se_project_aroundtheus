@@ -3,14 +3,13 @@ export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super(popupSelector);
     this._form = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit =  handleFormSubmit;
-    
-    this.setEventListeners();
+    this._handleFormSubmit = handleFormSubmit;
 
+    this.setEventListeners();
   }
 
-  setSubmitHandler(handler){
-   this._handleFormSubmit = handler;
+  setSubmitHandler(handler) {
+    this._handleFormSubmit = handler;
   }
 
   setEventListeners() {
@@ -20,5 +19,13 @@ export default class PopupWithConfirmation extends Popup {
       evt.preventDefault();
       this._handleFormSubmit();
     });
+  }
+
+  setButtonText(buttonText) {
+    this._form.querySelector(".modal__button").textContent = buttonText;
+  }
+
+  reset() {
+    this._form.reset();
   }
 }

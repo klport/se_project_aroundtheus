@@ -90,26 +90,43 @@ const profileUserInfo = new UserInfo(
 
 function handleProfileFormSubmit(formData) {
   //fetch request to change the name and description on the server
+  profileEditModal.setButtonText("Saving...");
+  //profileEditModal.reset();
   api
+
     .updateUserInfo(formData)
     .then((res) => {
       profileUserInfo.setUserInfo(res.name, res.about);
+      profileEditModal.close();
+      //modal__form.reset();
     })
+
     .catch((err) => {
       console.error(err);
       alert("Failed to change user info");
+      console.log(formData);
+    })
+    .finally(() => {
+      profileEditModal.setButtonText("Save");
+      profileEditModal.reset();
     });
-  console.log(formData);
 }
 
 function handleCardAddSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.url };
-
-  api.addCard(cardData).then((res) => {
-    const cardElement = createCard(res);
-    cardSection.addItem(cardElement);
-    addFormValidator.resetValidation();
-  });
+  addCardModal.setButtonText("Saving...");
+  api
+    .addCard(cardData)
+    .then((res) => {
+      const cardElement = createCard(res);
+      cardSection.addItem(cardElement);
+      addFormValidator.resetValidation();
+    })
+    .finally(() => {
+      addCardModal.setButtonText("Save");
+    });
+  addCardModal.close();
+  reset();
 }
 
 function handleImagePreview(name, link) {
@@ -123,6 +140,7 @@ function handleDeleteClick(card) {
     api
       .deleteCard(card._id)
       .then(() => {
+        deleteConfirmationModal.setButtonText("Deleting...");
         //closes modal
         deleteConfirmationModal.close();
         //deletes card on the UI
@@ -205,24 +223,26 @@ api
 
 //Edit The Profile Avatar
 function handleAvatarFormSubmit(inputValues) {
-  // Find the submit button in the form by class name
-  const submitButton = document.getElementsByClassName("modal__button")[3];
-
-  // Update the text before making the API call
-  submitButton.textContent = "Saving...";
-
+  editAvatarModal.setButtonText("Saving...");
   api
+
     .updateAvatar(inputValues)
     .then((res) => {
       console.log(res);
       profileUserInfo.setAvatar(res.avatar);
       editAvatarModal.close();
+      //modal__form.reset();
+
+      // const modal__form = document.getElementById(
+      //   "change-profile-picture-form"
+      // );
     })
     .catch((error) => {
       console.log(error);
       alert(`failed to change avatar ${error}`);
+    })
+    .finally(() => {
+      editAvatarModal.setButtonText("Save");
     });
-  // .finally(() =>{
-
-  // })
+  reset();
 }
