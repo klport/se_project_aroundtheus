@@ -108,7 +108,6 @@ function handleProfileFormSubmit(formData) {
     })
     .finally(() => {
       profileEditModal.setButtonText("Save");
-      profileEditModal.reset();
     });
 }
 
@@ -126,7 +125,6 @@ function handleCardAddSubmit(inputValues) {
       addCardModal.setButtonText("Save");
     });
   addCardModal.close();
-  reset();
 }
 
 function handleImagePreview(name, link) {
@@ -244,5 +242,4 @@ function handleAvatarFormSubmit(inputValues) {
     .finally(() => {
       editAvatarModal.setButtonText("Save");
     });
-  reset();
 }

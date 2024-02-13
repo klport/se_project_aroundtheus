@@ -24,8 +24,4 @@ export default class PopupWithConfirmation extends Popup {
   setButtonText(buttonText) {
     this._form.querySelector(".modal__button").textContent = buttonText;
   }
-
-  reset() {
-    this._form.reset();
-  }
 }

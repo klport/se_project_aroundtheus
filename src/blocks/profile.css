@@ -9,8 +9,44 @@
   margin: 24px;
 }
 
+.profile_avatar_container .profile_image_edit_button {
+  background: transparent url(../images/avatar-edit.svg) center no-repeat;
+  opacity: 0; /* Initially hide the edit button */
+  border: none;
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-65%, -60%);
+  transition: opacity 0.3s ease-in-out; /* Add transition for a smooth effect */
+}
+
+/* Show the edit button when hovering over the container */
+.profile_avatar_container:hover .profile_image_edit_button {
+  opacity: 1;
+}
+
+/* Add hover effect for the edit button */
+.profile_avatar_container:hover .profile_image_edit_button:hover {
+  cursor: pointer;
+  /* Add additional styles for the edit button when hovering if needed */
+}
+
+/* 
+.profile_avatar_container:hover .profile__edit-button {
+  opacity: 1;
+}
+
+.profile_avatar_container:hover .profile__image {
+  opacity: 0.2;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .profile_image_edit_button {
   background: transparent url(../images/avatar-edit.svg) center no-repeat;
+  opacity: 0;
+  border: none;
   height: 26px;
   width: 26px;
   position: absolute;
@@ -19,12 +55,16 @@
   transform: translate(-65%, -60%);
 }
 
+.profile_image_edit_button:hover {
+  cursor: pointer;
+} */
+
 .profile__image {
   height: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 24px;
+  /* margin-right: 24px; */
 }
 
 .profile__info {
