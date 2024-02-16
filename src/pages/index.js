@@ -127,6 +127,41 @@ function handleCardAddSubmit(inputValues) {
   addCardModal.close();
 }
 
+function handleLikeClick(card) {
+  console.log("like card is running");
+  // call the api and pass card.id and card.isLiked
+  api
+    .updateCardLike(card.id, card.isLiked)
+    .then(() => {
+      card.addLike();
+      card.isLiked = true;
+
+      //card.setLikeButtonState();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(`${err} Failed to like card`);
+    });
+
+  // after api is successful, we can then update the UI
+}
+
+function handleUnlikeClick(card) {
+  console.log("unlike card is running");
+  api
+    .updateCardLike(card.id, card.isLiked)
+    .then(() => {
+      card.removeLike();
+      card.isLiked = false;
+
+      //card.setLikeButtonState();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(`${err} Failed to unlike card`);
+    });
+}
+
 function handleImagePreview(name, link) {
   previewImageModal.open(name, link);
 }
@@ -180,7 +215,9 @@ function createCard(cardData) {
     cardData,
     "#card-template",
     handleImagePreview,
-    handleDeleteClick
+    handleDeleteClick,
+    handleLikeClick,
+    handleUnlikeClick
   );
   return card.getView();
 }
@@ -218,6 +255,13 @@ api
     cardSection.renderItems();
   })
   .catch();
+
+//Update Likes
+
+// function {
+//   api.updateCardLike();
+
+// }
 
 //Edit The Profile Avatar
 function handleAvatarFormSubmit(inputValues) {

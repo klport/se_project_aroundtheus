@@ -51,6 +51,13 @@ export default class API {
     }).then((res) => this._checkResponse(res));
   }
 
+  updateCardLike(cardId, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this._headers,
+    }).then((res) => this._checkResponse(res));
+  }
+
   updateAvatar(link) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
