@@ -573,6 +573,14 @@ template {
   overflow: hidden;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
 .profile__edit-button {
   background: transparent url(8667ac4a523e8fc42e59.svg) center no-repeat;
   height: 24px;
@@ -858,6 +866,8 @@ template {
   opacity: 0.5;
   transition: opacity 0.5s ease;
   cursor: pointer;
+  transform: rotate(180deg);
+  transition: transform 0.7s ease-in-out;
 }
 
 .modal__title {
