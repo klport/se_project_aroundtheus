@@ -170,7 +170,7 @@ function handleDeleteClick(card) {
   //runs when clicking the yes button
   function deleteCard() {
     //delete the card on the server.
-    deleteConfirmationModal.setButtonText("Delete");
+    deleteConfirmationModal.setButtonText("Deleting");
     api
       .deleteCard(card.id)
       .then(() => {
@@ -185,7 +185,7 @@ function handleDeleteClick(card) {
       })
 
       .finally(() => {
-        deleteConfirmationModal.setButtonText("Deleting...");
+        deleteConfirmationModal.setButtonText("Delete");
       });
   }
   deleteConfirmationModal.open();
