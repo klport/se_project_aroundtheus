@@ -61,9 +61,11 @@ export default class Card {
   // }
 
   addLike() {
+    this.isLiked = true;
     this._likeButton.classList.add("card__like-button_active");
   }
   removeLike() {
+    this.isLiked = false;
     this._likeButton.classList.remove("card__like-button_active");
   }
 

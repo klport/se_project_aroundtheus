@@ -9,7 +9,7 @@ import Section from "../components/Section.js";
 import { initialCards, config } from "../utils/constants.js";
 
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
-import Api from "./API.js";
+import Api from "../components/API.js";
 
 //API
 
@@ -113,18 +113,18 @@ function handleProfileFormSubmit(formData) {
 
 function handleCardAddSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.url };
+  addFormValidator.resetValidation();
   addCardModal.setButtonText("Saving...");
   api
     .addCard(cardData)
     .then((res) => {
       const cardElement = createCard(res);
       cardSection.addItem(cardElement);
-      addFormValidator.resetValidation();
+      addCardModal.close();
     })
     .finally(() => {
       addCardModal.setButtonText("Save");
     });
-  addCardModal.close();
 }
 
 function handleLikeClick(card) {
@@ -134,7 +134,7 @@ function handleLikeClick(card) {
     .updateCardLike(card.id, card.isLiked)
     .then(() => {
       card.addLike();
-      card.isLiked = true;
+      //card.isLiked = true;
 
       //card.setLikeButtonState();
     })
@@ -152,7 +152,7 @@ function handleUnlikeClick(card) {
     .updateCardLike(card.id, card.isLiked)
     .then(() => {
       card.removeLike();
-      card.isLiked = false;
+      //card.isLiked = false;
 
       //card.setLikeButtonState();
     })
@@ -170,10 +170,10 @@ function handleDeleteClick(card) {
   //runs when clicking the yes button
   function deleteCard() {
     //delete the card on the server.
+    deleteConfirmationModal.setButtonText("Delete");
     api
-      .deleteCard(card._id)
+      .deleteCard(card.id)
       .then(() => {
-        deleteConfirmationModal.setButtonText("Deleting...");
         //closes modal
         deleteConfirmationModal.close();
         //deletes card on the UI
@@ -182,6 +182,10 @@ function handleDeleteClick(card) {
       .catch((err) => {
         console.error(err);
         alert(`${err} Failed to delete card`);
+      })
+
+      .finally(() => {
+        deleteConfirmationModal.setButtonText("Deleting...");
       });
   }
   deleteConfirmationModal.open();
@@ -254,7 +258,10 @@ api
 
     cardSection.renderItems();
   })
-  .catch();
+  .catch((err) => {
+    console.log(err);
+    alert("Failed to load cards");
+  });
 
 //Update Likes
 

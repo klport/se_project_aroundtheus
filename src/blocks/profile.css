@@ -88,6 +88,14 @@
   overflow: hidden;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
 .profile__edit-button {
   background: transparent url(../images/pointer-pen.svg) center no-repeat;
   height: 24px;

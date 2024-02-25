@@ -68,6 +68,8 @@
   opacity: 0.5;
   transition: opacity 0.5s ease;
   cursor: pointer;
+  transform: rotate(180deg);
+  transition: transform 0.7s ease-in-out;
 }
 
 .modal__title {
