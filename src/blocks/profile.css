@@ -4,12 +4,67 @@
   padding-top: 40px;
 }
 
+.profile_avatar_container {
+  position: relative;
+  margin: 24px;
+}
+
+.profile_avatar_container .profile_image_edit_button {
+  background: transparent url(../images/avatar-edit.svg) center no-repeat;
+  opacity: 0; /* Initially hide the edit button */
+  border: none;
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-65%, -60%);
+  transition: opacity 0.3s ease-in-out; /* Add transition for a smooth effect */
+}
+
+/* Show the edit button when hovering over the container */
+.profile_avatar_container:hover .profile_image_edit_button {
+  opacity: 1;
+}
+
+/* Add hover effect for the edit button */
+.profile_avatar_container:hover .profile_image_edit_button:hover {
+  cursor: pointer;
+  /* Add additional styles for the edit button when hovering if needed */
+}
+
+/* 
+.profile_avatar_container:hover .profile__edit-button {
+  opacity: 1;
+}
+
+.profile_avatar_container:hover .profile__image {
+  opacity: 0.2;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile_image_edit_button {
+  background: transparent url(../images/avatar-edit.svg) center no-repeat;
+  opacity: 0;
+  border: none;
+  height: 26px;
+  width: 26px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-65%, -60%);
+}
+
+.profile_image_edit_button:hover {
+  cursor: pointer;
+} */
+
 .profile__image {
   height: 120px;
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 24px;
+  /* margin-right: 24px; */
 }
 
 .profile__info {
@@ -33,6 +88,14 @@
   overflow: hidden;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
 .profile__edit-button {
   background: transparent url(../images/pointer-pen.svg) center no-repeat;
   height: 24px;
@@ -103,13 +166,16 @@
     margin-right: 0;
   }
 }
-@media screen and (max-width: 580px) {
+
+/* @media screen and (max-width: 580px) {
+
   .profile {
     width: 100%;
     margin: 0;
     flex-direction: column;
     padding-bottom: 1px;
   }
+
   .profile__image {
     margin: 0;
   }
@@ -119,21 +185,26 @@
     line-height: 17px;
     text-align: center;
   }
+
   .profile__info {
     justify-content: center;
     gap: 14px 10px;
     margin-top: 30px;
     margin-bottom: 36px;
   }
+
   .profile__add-button {
     margin: 0 auto;
     width: 282px;
   }
+
 }
+ */
+
 /* 
 @media screen and (max-width: 320px) {
   .profile {
     padding-bottom: 1px;
   }
 
-}  */
+} */

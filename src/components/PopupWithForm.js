@@ -25,11 +25,20 @@ export default class PopupWithForm extends Popup {
     }
   }
 
+  //   // Find the submit button in the form by class name
+  // const submitButton = updateAvatarForm.querySelector(".modal__button");
+  // // Update the text before making the API call
+  // submitButton.textContent = "Saving...";
+
+  setButtonText(buttonText) {
+    this._form.querySelector(".modal__button").textContent = buttonText;
+  }
+
   setEventListeners() {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this.close();
+      //this.close();
     });
     super.setEventListeners();
   }
